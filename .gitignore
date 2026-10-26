@@ -1,0 +1,23 @@
+
+# macOS
+.DS_Store
+
+# .NET
+**/bin/
+**/obj/
+.vs/
+
+# Angular / Node.js
+**/node_modules/
+**/dist/
+**/.angular/
+
+# Environnement local et données sensibles
+.env
+.env.*
+!.env.example
+
+# Bases de données locales
+*.db
+*.db-shm
+*.db-wal
