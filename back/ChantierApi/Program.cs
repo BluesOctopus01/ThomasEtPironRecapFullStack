@@ -1,6 +1,7 @@
-
-using ChantierApi.Data;
+using Microsoft.AspNetCore.Identity;
+using ChantierApi.data;
 using Microsoft.EntityFrameworkCore;
+using ChantierApi.models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,13 @@ var connectionString = builder.Configuration
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString)
 );
+
+builder.Services
+    .AddIdentityApiEndpoints<ApplicationUser>()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<AppDbContext>();
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
