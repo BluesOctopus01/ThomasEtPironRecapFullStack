@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using ChantierApi.data;
 using Microsoft.EntityFrameworkCore;
 using ChantierApi.models;
+using ChantierApi.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,15 +25,7 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
-
-app.MapGet("/db-check", async (AppDbContext db) =>
-{
-    bool connected = await db.Database.CanConnectAsync();
-
-    return connected
-        ? "Connexion PostgreSQL réussie !"
-        : "Impossible de se connecter à PostgreSQL.";
-});
+AuthEndpoints.Map(app);
+DbCheckEndpoints.Map(app);
 
 app.Run();
