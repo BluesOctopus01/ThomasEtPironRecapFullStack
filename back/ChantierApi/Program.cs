@@ -8,8 +8,9 @@ ServiceConfiguration.Configure(builder);
 
 var app = builder.Build();
 
-// Initialisation des rôles
+// Initialiser les rôles, puis l'administrateur
 await RoleSeeder.SeedAsync(app);
+await AdminSeeder.SeedAsync(app);
 
 // Déclaration des routes
 AuthEndpoints.Map(app);
