@@ -15,6 +15,7 @@ await AdminSeeder.SeedAsync(app);
 // Déclaration des routes
 AuthEndpoints.Map(app);
 DbCheckEndpoints.Map(app);
+AdminEndpoints.Map(app);
 
 // Démarrage
 app.Run();
